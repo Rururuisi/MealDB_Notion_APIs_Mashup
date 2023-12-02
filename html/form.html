@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheMealDB & Notion Mashup: Add Recipes to Notion</title>
+    <style>
+        body, form{
+            margin:20px auto;
+            max-width:800px;
+            overflow-x:hidden;
+        }
+        fieldset{
+            display: flex;
+        }
+        input#keyword{
+            flex-grow:50;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="search" method="get">
+        <fieldset>
+            <legend>TheMealDB & Notion Mashup: Add Recipes to Notion</legend>
+            <label for="keyword">Enter Food Keyword: </label>
+            <input id="keyword" name="keyword" type="text" />
+            <input type="submit" value="Search Food Recipes" />
+        </fieldset>
+    </form>
+</body>
+</html>

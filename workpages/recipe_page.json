@@ -1,0 +1,61 @@
+{
+    "parent": {
+        "page_id": ""
+    },
+    "cover": {
+        "type": "external",
+        "external": {
+            "url": ""
+        }
+    },
+    "properties": {
+        "title": []
+    },
+    "children": [
+        {
+            "heading_2": {
+                "rich_text": [
+                    {
+                        "text": {
+                            "content": "YouTube Tutorial"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "video": {
+                "external": {
+                    "url": ""
+                }
+            }
+        },
+        {
+            "heading_2": {
+                "rich_text": [
+                    {
+                        "text": {
+                            "content": "Ingredients"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "paragraph": {
+                "rich_text": []
+            }
+        },
+        {
+            "heading_2": {
+                "rich_text": [
+                    {
+                        "text": {
+                            "content": "Instructions"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
