@@ -185,7 +185,7 @@ function request_access_token(authCode, res, redirectUri, session) {
 }
 
 function receive_access_token(body, session, res) {
-	const { access_token, workspace_id } = JSON.parse(body);
+	const { access_token } = JSON.parse(body);
 	if (access_token === undefined) {
 		// when received error info
 		error_status(res, 401, "Unauthorized", "Failed to Get Access Token");
