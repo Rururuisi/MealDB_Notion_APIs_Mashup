@@ -8,26 +8,39 @@
     <style>
         body, form{
             margin:20px auto;
-            max-width:800px;
-            overflow-x:hidden;
+            width:600px;
+            box-sizing: border-box;
         }
-        fieldset{
-            display: flex;
+        main{
+            width: 100%;
+            padding: 20px;
         }
-        input#keyword{
-            flex-grow:50;
-            margin: 0 20px;
+
+        div {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        input {
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <form action="search" method="get">
-        <fieldset>
-            <legend>TheMealDB & Notion Mashup: Add Recipes to Notion</legend>
-            <label for="keyword">Enter Food Keyword: </label>
-            <input id="keyword" name="keyword" type="text" />
-            <input type="submit" value="Search Food Recipes" />
-        </fieldset>
+        <h2>TheMealDB & Notion Mashup: Add Recipes to Notion</h2>
+        <main>
+            <div>
+                <label for="keyword">Enter Food Keyword: </label>
+                <input id="keyword" name="keyword" type="text" required/>
+            </div>
+            <div>
+                <label for="page_url">Enter Notion Page URL you would like to add recipes on: </label>
+                <input id="page_url" name="page_url" type="url" required/><br>
+            </div>
+            <p>(When you are redirected to Notion Authorization page, remember to select the page of the page url you provided above! )</p>
+                <button type="submit">Search Food Recipes</button>
+        </main>
     </form>
 </body>
 </html>

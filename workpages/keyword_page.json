@@ -1,19 +1,19 @@
 {
-    "parent": {
-        "page_id": "2ffec04f973e45ef8d12cf4adc709e95"
-    },
-    "properties": {
-        "title": []
-    },
-    "children": [
-        {
-            "paragraph": {"rich_text": []}
-        },
-        {
-            "divider":{}
-        },
-        {
-            "paragraph": {"rich_text": []}
-        }
-    ]
+	"parent": {
+		"page_id": ""
+	},
+	"properties": {
+		"title": []
+	},
+	"children": [
+		{
+			"paragraph": { "rich_text": [] }
+		},
+		{
+			"divider": {}
+		},
+		{
+			"paragraph": { "rich_text": [] }
+		}
+	]
 }
