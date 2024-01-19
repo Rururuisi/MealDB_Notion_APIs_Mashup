@@ -69,15 +69,8 @@ function request_handler(req, res) {
 // clear the token cache when the server close
 const close_emitter = new CloseEmitter();
 close_emitter.on("close", () => {
-	let len = all_sessions.length;
-	all_sessions.forEach((session) => {
-		fs.unlink(`./cache/token-${session.state}.json`, () => {
-			len--;
-			if (len <= 0) {
-				process.exit();
-			}
-		});
-	});
+	fs.unlink("./cache/token.json", () => {});
+	process.exit();
 });
 
 // -----------------------Request Food Recipes from TheMealDB--------------------------
@@ -131,29 +124,24 @@ function receive_food_recipes(body, keyword, state, redirect_uri, res) {
 
 	// if we have available token, skip the authentication of Notion API
 	// if not, redirect to Notion Authentication
-	fs.readFile(
-		`./cache/token-${state}.json`,
-		{ encoding: "utf-8" },
-		(err, data) => {
-			if (err) {
+	fs.readFile("./cache/token.json", { encoding: "utf-8" }, (err, data) => {
+		if (err) {
+			redirect_to_Notion_auth(state, redirect_uri, res);
+		} else {
+			const { access_token, page_id } = JSON.parse(data);
+			if (all_sessions[index].page_id !== page_id) {
 				redirect_to_Notion_auth(state, redirect_uri, res);
 			} else {
-				const { access_token, page_id } = JSON.parse(data);
-				console.log(all_sessions[index], page_id);
-				if (all_sessions[index].page_id !== page_id) {
-					redirect_to_Notion_auth(state, redirect_uri, res);
-				} else {
-					create_keyword_page(
-						access_token,
-						page_id,
-						food_recipes,
-						keyword,
-						res
-					);
-				}
+				create_keyword_page(
+					access_token,
+					page_id,
+					food_recipes,
+					keyword,
+					res
+				);
 			}
 		}
-	);
+	});
 }
 
 // ---------------Notion OAuth 2.0 Three Legged Authentication------------------
@@ -203,7 +191,7 @@ function receive_access_token(body, session, res) {
 		return;
 	}
 	fs.writeFile(
-		`./cache/token-${session.state}.json`,
+		"./cache/token.json",
 		JSON.stringify({ ...JSON.parse(body), page_id: session.page_id }),
 		(err) => {}
 	); // cache the token for further requests
